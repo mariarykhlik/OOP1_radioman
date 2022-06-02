@@ -1,13 +1,13 @@
 package ru.netology.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
-
-    public Radio() {
-    }
-
-    public Radio(int stationsNumber) {
-        this.stationsNumber = stationsNumber;
-    }
 
     private int stationsNumber = 10;
     private int firstStation = 0;
@@ -16,20 +16,8 @@ public class Radio {
     private int maxVolume = 100;
     private int currentVolume;
 
-    public int getStationsNumber() {
-        return stationsNumber;
-    }
-
-    public int getFirstStation() {
-        return firstStation;
-    }
-
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public int getMaxVolume() {
-        return maxVolume;
+    public Radio(int stationsNumber) {
+        this.stationsNumber = stationsNumber;
     }
 
     public void setCurrentStation(int currentStation) {
@@ -43,7 +31,7 @@ public class Radio {
     }
 
     public void switchToNextStation() {
-        if (this.currentStation == firstStation + stationsNumber - 1) {
+        if (this.currentStation == (firstStation + stationsNumber - 1)) {
             this.currentStation = firstStation;
         } else {
             this.currentStation++;
@@ -52,14 +40,10 @@ public class Radio {
 
     public void switchToPrevStation() {
         if (this.currentStation == firstStation) {
-            this.currentStation = firstStation + stationsNumber - 1;
+            this.currentStation = (firstStation + stationsNumber - 1);
         } else {
             this.currentStation--;
         }
-    }
-
-    public int getCurrentStation() {
-        return this.currentStation;
     }
 
     public void setCurrentVolume(int currentVolume) {
@@ -86,9 +70,5 @@ public class Radio {
         } else {
             this.currentVolume--;
         }
-    }
-
-    public int getCurrentVolume() {
-        return this.currentVolume;
     }
 }
